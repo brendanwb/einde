@@ -21,6 +21,8 @@ gem "recipient_interceptor"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
+gem "jbuilder"
+gem "oj"
 gem "uglifier"
 
 group :development do
@@ -39,6 +41,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
+  gem 'guard-rspec', require: false
   gem "rspec-rails", "~> 3.4.0"
 end
 
