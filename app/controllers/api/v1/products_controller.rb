@@ -7,7 +7,7 @@ class Api::V1::ProductsController < ApiController
         render
       else
         render json: {
-          message: 'Validation Failed',
+          message: "Validation Failed",
           errors: @product.errors.full_messages
         }, status: 422
       end
@@ -16,6 +16,21 @@ class Api::V1::ProductsController < ApiController
 
   def show
     @product = Product.find(params[:id])
+  end
+
+  def update
+    authorize do |user|
+      @product = Product.find(params[:id])
+
+      if @product.update_attributes(product_params)
+        render
+      else
+        render json: {
+          message: "Validation Failed",
+          errors: @product.errors.full_messages,
+        }, status: 422
+      end
+    end
   end
 
   private
